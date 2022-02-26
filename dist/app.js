@@ -17,10 +17,29 @@ class Department {
     }
 }
 class ITDepartment extends Department {
+    constructor(id, admins) {
+        super(id, 'IT');
+        this.admins = admins;
+    }
 }
-const accounting = new Department('1', 'Accounting');
-accounting.addEmployee('Max');
-accounting.addEmployee('Diego');
-accounting.describe();
-accounting.printEmployeeInformation();
+class AccountingDepartment extends Department {
+    constructor(id, reports) {
+        super(id, 'Accounting');
+        this.reports = reports;
+    }
+    addReport(text) {
+        this.reports.push(text);
+    }
+    printReports() {
+        console.log(`Reports: ${this.reports}`);
+    }
+}
+const it = new ITDepartment('1', ['Max']);
+it.addEmployee('Max');
+it.addEmployee('Diego');
+it.describe();
+it.printEmployeeInformation();
+const accounting = new AccountingDepartment('d2', []);
+accounting.addReport('Something went wrong...');
+accounting.printReports();
 //# sourceMappingURL=app.js.map
